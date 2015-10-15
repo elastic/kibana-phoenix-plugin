@@ -1,0 +1,23 @@
+{
+  "name": "jubilee",
+  "version": "1.0.0",
+  "description": "Charting for kibana",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "phx": "0.1.0"
+  },
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-eslint": "1.0.0",
+    "gulp-watch": "^4.3.5",
+    "path": "0.12.7",
+    "rsync": "0.4.0"
+  }
+}
