@@ -1,13 +1,13 @@
 require('ui/chrome')
 .setTabs([{
   id: '',
-  title: 'Jubilee'
+  title: 'Phoenix'
 }])
-.setRootTemplate(require('plugins/jubilee/index.html'));
+.setRootTemplate(require('plugins/phoenix/index.html'));
 
-require('ui/modules').get('apps/jubilee', [])
-.controller('jubilee', function($scope) {
-  var faker = require('plugins/jubilee/lib/fakeData.js');
+require('ui/modules').get('apps/phoenix', [])
+.controller('phoenix', function($scope) {
+  var faker = require('plugins/phoenix/lib/fakeData.js');
   $scope.ui = {
     data: faker()
   };

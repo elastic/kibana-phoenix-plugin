@@ -9,7 +9,7 @@ var watch = require('gulp-watch');
 
 var pkg = require('./package.json');
 
-var kibanaPluginDir = path.resolve(__dirname, '../kibana/installedPlugins/jubilee');
+var kibanaPluginDir = path.resolve(__dirname, '../kibana/installedPlugins/phoenix');
 
 
 var include = ['package.json', 'index.js', 'public', 'node_modules'];
