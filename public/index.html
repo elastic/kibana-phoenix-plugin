@@ -8,7 +8,10 @@
         <chart data="ui.data" options="ui.options"></chart>
       </div>
       <div class="row">
-        <textarea style="height:400px; width:400px; overflow:scroll;" ng-model="ui.options">
+        <textarea style="height:400px; width:400px; overflow:scroll;" ng-model="ui.data">
+          <pre>{{ui.data | json}}</pre>
+        </textarea>
+        <textarea style="height:300px; width: 400px; overflow:scroll;" ng-model="ui.options">
           <pre>{{ui.options | json}}</pre>
         </textarea>
       </div>

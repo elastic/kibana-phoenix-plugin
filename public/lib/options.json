@@ -13,8 +13,5 @@
   "bar": {
     "show": true,
     "timePadding": 0.1
-  },
-  "line": {
-    "show": true
   }
 }

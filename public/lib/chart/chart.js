@@ -5,15 +5,18 @@ module.directive('chart', function () {
     var Phx = require('phx/build/phx');
     var chart = new Phx(element[0])
       .options(JSON.parse(scope.options))
-      .data([
-        {data: [scope.data]} // chart
-      ]);
+      .data(JSON.parse(scope.data));
 
     scope.render = function () {
       chart.draw(400, 400);
     };
 
     scope.render();
+
+    scope.$watch('data', function (newVal, oldVal) {
+      chart.data(JSON.parse(newVal));
+      scope.render();
+    });
 
     scope.$watch('options', function (newVal, oldVal) {
       chart.options(JSON.parse(newVal));
