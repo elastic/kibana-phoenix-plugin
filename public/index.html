@@ -1,12 +1,17 @@
-<h1>Phoenix</h1>
-<div ng-controller="ChartCtrl">
-  <chart data="ui.data" options="ui.options"
-         style="height:400px; width:400px; position:relative">
-  </chart>
-  <div style="float:right">
-    <textarea style="height:400px; width:400px; overflow:scroll;"
-              ng-model="ui.options"><pre>{{ui.options | json}}</pre>
-    </textarea>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Phoenix</h3>
+    </div>
+    <div class="col-sm-8" ng-controller="ChartCtrl">
+      <div class="row" style="height:400px; width:400px; position:relative">
+        <chart data="ui.data" options="ui.options"></chart>
+      </div>
+      <div class="row">
+        <textarea style="height:400px; width:400px; overflow:scroll;" ng-model="ui.options">
+          <pre>{{ui.options | json}}</pre>
+        </textarea>
+      </div>
+    </div>
   </div>
 </div>
-

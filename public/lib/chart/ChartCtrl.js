@@ -6,6 +6,6 @@ module.controller('ChartCtrl', function ($scope) {
 
   $scope.ui = {
     data: faker(),
-    options: JSON.stringify(options, null, 2),
+    options: JSON.stringify(options, null, 2)
   };
 });

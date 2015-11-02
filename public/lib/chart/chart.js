@@ -6,7 +6,7 @@ module.directive('chart', function () {
     var chart = new Phx(element[0])
       .options(JSON.parse(scope.options))
       .data([
-        {data: [scope.data]}
+        {data: [scope.data]} // chart
       ]);
 
     scope.render = function () {
