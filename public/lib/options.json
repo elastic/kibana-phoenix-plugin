@@ -1,0 +1,20 @@
+{
+  "type": "series",
+  "layout": "grid",
+  "timeInterval": "30s",
+  "xAxis": {
+    "position": "bottom",
+    "type": "datetime"
+  },
+  "yAxis": {
+    "position": "left",
+    "type": "linear"
+  },
+  "bar": {
+    "show": true,
+    "timePadding": 0.1
+  },
+  "line": {
+    "show": true
+  }
+}

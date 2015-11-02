@@ -1,4 +1,12 @@
-<div ng-controller="phoenix">
 <h1>Phoenix</h1>
-<div ng-bind="ui.data.length"></div>
+<div ng-controller="ChartCtrl">
+  <chart data="ui.data" options="ui.options"
+         style="height:400px; width:400px; position:relative">
+  </chart>
+  <div style="float:right">
+    <textarea style="height:400px; width:400px; overflow:scroll;"
+              ng-model="ui.options"><pre>{{ui.options | json}}</pre>
+    </textarea>
+  </div>
 </div>
+
