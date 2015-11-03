@@ -5,6 +5,7 @@ var defaultOptions = {
   label: 'Label 1',
   interval: 1000 * 30 // 30 seconds
 };
+
 function fakeData(pref) {
   var settings = _.assign({}, defaultOptions, pref);
 
