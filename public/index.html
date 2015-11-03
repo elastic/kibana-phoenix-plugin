@@ -2,82 +2,161 @@
   <div class="row">
     <div class="col-sm-3">
       <h3>Phoenix</h3>
+      <ul>
+        <li>Getting Started</li>
+        <li>Creating a Chart</li>
+        <li>Bar Charts</li>
+        <li>Area Charts</li>
+        <li>Line Charts</li>
+        <li>Scatterplot</li>
+        <li>Pie Charts</li>
+        <li>Combo Charts</li>
+      </ul>
     </div>
     <div class="col-sm-8" ng-controller="ChartCtrl">
       <div class="content">
         <h1>Phoenix Documentation</h1>
+
         <h2>Getting Started</h2>
+
         <h3>Include Phx.js</h3>
-
         <p>
-          First we need to include the phx.js library on the page. The library occupies a global variable of <strong>
-          Phx</strong>.
+          First we need to include the <strong>phx.js</strong> library on the page. The library occupies the global
+          variable <code>Phx</code>.
         </p>
-
-        <pre>&lt;script src=“phx.js”&gt;&lt;/script&gt;</pre>
-
-        <p>Alternatively, if you’re using an AMD loader for JavaScript modules, that is also supported.</p>
-
-        <pre>// Using requirejs<br/>require([‘path/to/phx.js’], function (Phx) {<br/>  // Use Phx as normal here.<br/>  ...<br/>});</pre>
-
-        <p>You can also grab <strong>Phx.js</strong> using npm:</p>
-
+        <pre class="prettyprint lang-html">&lt;script src=“phx.js”&gt;&lt;/script&gt;</pre>
+        <p>Alternatively, you can use an AMD loader for JavaScript modules.</p>
+        <pre class="prettyprint lang-js">// Using requirejs<br/>require([‘path/to/phx.js’], function (Phx) {<br/>  // Use Phx as normal here.<br/>  ...<br/>});</pre>
+        <p>You can also grab <strong>phx.js</strong> using npm:</p>
         <kbd>npm install phx --save</kbd>
 
         <h2>Creating a chart</h2>
         <p>
           To create a chart(s), we need 3 things, a reference to a valid <strong>DOM</strong> element, a set of
           <strong>options</strong>, and <strong>data</strong>. Phoenix can create one or more charts based
-          on the data that it is passed and the layout type specified.
+          on the data that it is passed. One chart is rendered by passing Phoenix a Chart <code>Object</code>, while
+          multiple charts are rendered by passing an <code>Array</code> of Chart <code>Objects</code>.
         </p>
 
         <h3>Passing in a DOM Element</h3>
-
         <p>
-          First, we need to instantiate the Phx class. To do this, we need to pass a reference to a valid DOM
+          First, we need to instantiate the <code>Phx</code> class. To do this, we need to pass a reference to a valid DOM
           element. Let's say in our HTML file, we have a <code>&lt;div&gt;</code> where our chart will go.
         </p>
-        <pre>&lt;div id=“myChart” style=“width:400px; height:400px; position:relative”&gt;&lt;/div&gt;</pre>
+        <pre class="prettyprint lang-html">&lt;div id=“myChart” style=“width:400px; height:400px; position:relative”&gt;&lt;/div&gt;</pre>
         <p><strong>NOTE:</strong> The <code>position:relative</code> here is important since charts are drawn using
           an absolute position within the parent DOM element.</p>
         <br/>
-        <p>Using vanilla javascript, we can select the DOM node and pass it into our <strong>Phx</strong> function.</p>
-        <pre>var el = document.getElementById(“myChart”);<br/></br/>// Instantiate our chart.<br/>var myChart = new Phx(el);</pre>
-
-        <p>Or, using jQuery.</p>
-
-        <pre>var el = $(“#myChart”).get(0);<br/>var myChart = new Phx(el);</pre>
-
-        <p>Or, using d3.</p>
-
-        <pre>var el = d3.select(“#myChart”)[0][0];<br/>var myChart = new Phx(el);</pre>
-
-        <h3>Structuring the Data</h3>
-
         <p>
-          Since Phx can create multiple charts, data passed to Phx must be in the form of a chart object. So, if
-          you are creating a single chart, then the chart object can be passed directly to the data method. If you
-          are creating more than one chart, then an array of chart objects need to be passed to the data method.
+          Using <em><strong>vanilla javascript</strong></em>, we can select the DOM node and pass it into our <strong>
+          Phx</strong> function.
+        </p>
+        <pre class="prettyprint lang-js">var el = document.getElementById(“myChart”);<br/></br/>// Instantiate our chart.<br/>var myChart = new Phx(el);</pre>
+        <p>Using <em><strong>jQuery</strong></em>.</p>
+        <pre class="prettyprint lang-js">var el = $(“#myChart”).get(0);<br/>var myChart = new Phx(el);</pre>
+        <p>Using <em><strong>d3</strong></em>.</p>
+        <pre class="prettyprint lang-js">var el = d3.select(“#myChart”);<br/>var myChart = new Phx(el);</pre>
+        <p>Using <em><strong>CSS selectors</strong></em>.</p>
+        <pre class="prettyprint lang-js">var myChart = new Phx("#myChart");</pre>
+
+        <h3>Chart Object(s)</h3>
+        <p>
+          Since Phx can create multiple charts, data passed to Phx must be in the form of a chart object. So, if you are
+          creating a single chart, then the chart object can be passed directly to the <code>data</code> method. If you
+          are creating more than one chart, then an array of chart objects need to be passed to the <code>data</code> method.
           <br>
           <br>For example:
         </p>
 
-        <pre>// Single Chart<br/>var singleChart = {<br/>  // accessor<br/>  data: [...]<br/>};<br/><br/>myChart.data(singleChart);<br/><br/>// Multiple Charts<br/>var multipleCharts = [<br/>  { data: [...] }, // Chart 1<br/>  { data: [...] }, // Chart 2<br/>  { data: [...] }, // Chart 3<br/>];<br/><br/>myChart.data(multipleCharts);</pre>
-
-        <h3>Setting the Options</h3>
-
+        <pre class="prettyprint lang-js">// Single Chart<br/>var singleChart = {<br/>  data: [...] // data accessor<br/>};<br/><br/>myChart.data(singleChart);<br/><br/>// Multiple Charts<br/>var multipleCharts = [<br/>  { data: [...] }, // Chart 1<br/>  { data: [...] }, // Chart 2<br/>  { data: [...] }, // Chart 3<br/>];<br/><br/>myChart.data(multipleCharts);</pre>
         <p>
-          The <strong>options</strong> is a javascript object of key value pairs. We may pass in options at the
-          global level or at the chart level.
+          <strong>NOTE: </strong>Chaining <code>data</code> methods overwrites the previous data object passed in to the
+          <code>data</code> method.
         </p>
 
-        <strong>Global options are the default options applied to all charts.</strong>
+        <h4>Anatomy of a Chart Object</h4>
+        <p>
+          Each chart object has two keys, <code>data</code> (required) and <code>options</code> (optional). The
+          format of data is dependent on the type of chart being rendered. Options are key value pairs whose keys and
+          values are dependent on the type of chart being rendered.
+          <br/>
+          <br/>For example:
+        </p>
 
-        <pre>// Global options<br/>var options = {<br/>  // Type of chart, defaults to series chart<br/>  type: "series",<br/>  // Chart layout, applies when there are multiple charts, defaults to rows<br/>  // Options include rows, columns, or grid<br/>  layout: "rows",<br/>  // Where to pull the data from each chart object, defaults to the data key<br/>  accessor: "data"<br/>};<br/><br/>// Pass the options object to the options method to set the global options.<br/>myChart.options(options);</pre>
+        <pre class="prettyprint lang-js">var options = {<br/>  type: "series", // type of chart<br/>  layout: "grid", // layout for the charts<br/>  accessor: "data" // Specifies the key to pull off the data from each chart<br/>};<br/><br/>var data = [<br/>  {x: "apple", y: 10}<br/>  {x: "orange", y: 5}<br/>  {x: "banana", y: 2}<br/>];<br/><br/>var chart = { options: options, data: data };<br/><br/>myChart.data(chart)</pre>
+
+        <h3>Global Options</h3>
+        <p>
+          Global <strong>options</strong> are options shared across one or more charts, and are specified using the
+          <code>options</code> method. It takes the format of an <code>Object</code> of key value pairs whose keys and
+          values are dependent on the type of chart being rendered.
+        </p>
+        <pre class="prettyprint lang-js">// Global options<br/>var options = {<br/>  type: "series",<br/>  layout: "grid",<br/>  accessor: "data"<br/>};<br/><br/>// Pass the options object to the options method to set the global options.<br/>myChart.options(options);</pre>
+        <p>
+          <strong>NOTE: </strong>Options specified within the Chart <code>Object</code> take precedence over those
+          specified using the <code>options</code> method.
+        </p>
+
+        <h4>Getting/Setting Global Options</h4>
+        <p>
+          There are times when you'll need to either get or set global options one at a time. For example when
+          changing a charts layout. In these situations, you can use the <code>get</code> and <code>set</code>
+          methods.
+        </p>
+
+        <pre class="prettyprint lang-js">// Get Layout type<br/>myChart.get("layout"); // returns `grid`<br/><br/>// Set the Layout to `columns`<br/>myChart.set("layout", "columns");<br/>myChart.get("layout"); // returns `columns`</pre>
+
+        <h3>Rendering a Chart(s)</h3>
+        <p>
+          Once we've satisfied our 3 requirements, <strong>DOM reference</strong>, <strong>data</strong>, and
+          <strong>options</strong>, we can use the <code>draw</code> method to render our chart(s).
+          <br/>
+          <br/>
+          The draw method takes two (optional) arguments, a <code>width</code> and <code>height</code>. The arguments
+          can either be numbers or functions that return numbers. If the width and height are not passed as parameters
+          to the <code>draw</code> method, <code>Phx</code> will attempt to read the width and height from the DOM
+          reference passed. If no width and height can be calculated, then no chart(s) are rendered.
+        </p>
+
+        <pre class="prettyprint lang-js">// Draw chart(s)<br/>myChart.draw();</pre>
+
+        <h2>Bar Charts</h2>
+        <h3>Time Series Chart</h3>
+        <h3>Stacked Time Series Chart</h3>
+        <h3>Horizontal Time Series Chart</h3>
+        <h3>Categorical Bar Chart</h3>
+        <h3>Stacked Categorical Bar Chart</h3>
+        <h3>Horizontal Bar Chart</h3>
+        <h3>Stacked Horizontal Bar Chart</h3>
+        <h3>Percentage Bar Chart</h3>
+
+        <h2>Area Charts</h2>
+        <h3>Time Series Chart</h3>
+        <h3>Stacked Time Series Chart</h3>
+        <h3>Categorical Area Chart</h3>
+        <h3>Stacked Categorical Area Chart</h3>
+        <h3>Overlapping Area Chart</h3>
+        <h3>Percentage Area Chart</h3>
+        <h3>Stream Graph</h3>
+
+        <h2>Line Charts</h2>
+        <h3>Line Chart</h3>
+        <h3>Multiple Line Chart</h3>
+
+        <h2>Scatterplot</h2>
+
+        <h2>Pie Charts</h2>
+        <h3>Single-Layer Pie Charts</h3>
+        <h3>Multi-Layer Pie Charts</h3>
+
+        <h2>Combo Charts</h2>
+        <h3>Bar and Line Chart</h3>
       </div>
+
       <div class="row" style="height:400px; width:400px; position:relative">
         <chart data="ui.data" options="ui.options"></chart>
       </div>
+
       <div class="row">
         <textarea style="height:400px; width:400px; overflow:scroll;" ng-model="ui.data">
           <pre>{{ui.data | json}}</pre>
@@ -86,6 +165,8 @@
           <pre>{{ui.options | json}}</pre>
         </textarea>
       </div>
+
     </div>
   </div>
 </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
