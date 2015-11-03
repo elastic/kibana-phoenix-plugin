@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.10.2",
-    "phx": "0.2.2"
+    "phx": "0.2.6"
   },
   "devDependencies": {
     "gulp": "3.9.0",
