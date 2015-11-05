@@ -3,25 +3,31 @@ var module = require('ui/modules').get('apps/phoenix', []);
 module.directive('chart', function () {
   function link (scope, element, attrs) {
     var Phx = require('phx/build/phx');
+    var options = {
+      bar: require('plugins/phoenix/lib/options/bar.js'),
+      horizontalBar: require('plugins/phoenix/lib/options/horizontalBar.js'),
+      categoricalBar: require('plugins/phoenix/lib/options/categoricalBar.js'),
+      area: require('plugins/phoenix/lib/options/area.js'),
+      line: require('plugins/phoenix/lib/options/line.js')
+    };
     var chart = new Phx(element[0])
-      .options(JSON.parse(scope.options))
-      .data(JSON.parse(scope.data));
+      .options(getOptions(attrs.type || 'bar'))
+      .data(scope.data);
+
+    function getOptions(type) {
+      return options[type];
+    }
 
     scope.render = function () {
-      chart.draw(400, 400);
+      chart.draw();
     };
 
     scope.render();
 
     scope.$watch('data', function (newVal, oldVal) {
-      chart.data(JSON.parse(newVal));
+      chart.data(newVal);
       scope.render();
     });
-
-    scope.$watch('options', function (newVal, oldVal) {
-      chart.options(JSON.parse(newVal));
-      scope.render();
-    }, true);
   }
 
   return {
@@ -30,7 +36,8 @@ module.directive('chart', function () {
       data: '=',
       options: '='
     },
-    template: '<div></div>',
+    template: '<div style="height:100%; position:relative"></div>',
+    replace: 'true',
     link: link
   };
 });

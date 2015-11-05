@@ -1,0 +1,35 @@
+<div class="row">
+  <h2>Bar Charts</h2>
+  <p>
+    A bar chart is a chart that uses either horizontal or vertical bars to show comparisons among categories
+    or for time series.
+  </p>
+
+  <ng-include src="'../plugins/phoenix/partials/bar_time_series.html'"></ng-include>
+  <ng-include src="'../plugins/phoenix/partials/bar_categorical.html'"></ng-include>
+
+  <h3>Stacked Time Series Chart</h3>
+
+  <h3>Horizontal Time Series Chart</h3>
+  <div class="row" style="height:400px" ng-controller="ChartCtrl">
+    <chart data="ui.data" type="horizontalBar"></chart>
+  </div>
+
+  <h4>Example usage</h4>
+  <pre class="prettyprint lang-js">var myBarChart = new Phx(el)<br/>  .data(data)<br/>  .options(options)<br/>  .draw()</pre>
+
+  <h4>Data Structure</h4>
+  <pre class="prettyprint lang-js">{{ {size: 5} | getData}}</pre>
+  <p>
+    Data is passed in through the Chart <code>Object</code>. For time series bar charts, data key references
+    an array of objects for single series or an array of arrays of objects for stacked series.
+  </p>
+
+  <h4>Options</h4>
+  <pre class="prettyprint lang-js">{{ 'horizontalBar' | getOptions }}</pre>
+
+  <h3>Stacked Categorical Bar Chart</h3>
+  <h3>Horizontal Bar Chart</h3>
+  <h3>Stacked Horizontal Bar Chart</h3>
+  <h3>Percentage Bar Chart</h3>
+</div>

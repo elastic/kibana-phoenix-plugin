@@ -1,0 +1,92 @@
+<div class="row">
+  <h2>Creating a chart</h2>
+  <p>
+    To create a chart(s), we need 3 things, a reference to a valid <strong>DOM</strong> element, a set of
+    <strong>options</strong>, and <strong>data</strong>. Phoenix can create one or more charts based
+    on the data that it is passed. One chart is rendered by passing Phoenix a Chart <code>Object</code>, while
+    multiple charts are rendered by passing an <code>Array</code> of Chart <code>Objects</code>.
+  </p>
+
+  <h3>Passing in a DOM Element</h3>
+  <p>
+    First, we need to instantiate the <code>Phx</code> class. To do this, we need to pass a reference to a valid DOM
+    element. Let's say in our HTML file, we have a <code>&lt;div&gt;</code> where our chart will go.
+  </p>
+  <pre class="prettyprint lang-html">&lt;div id=“myChart”&gt;&lt;/div&gt;</pre>
+  <pre class="prettyprint lang-css">/* CSS */<br/>#myChart {<br/>  width: 400px;<br/>  height: 400px;<br/>  position: relative;<br/>}</pre>
+  <p><strong>NOTE:</strong> The <code>position:relative</code> here is important since charts are drawn using
+    an absolute position within the parent DOM element.</p>
+  <br/>
+  <p>
+    Using <em><strong>vanilla javascript</strong></em>, we can select the DOM node and pass it into our <strong>
+    Phx</strong> function.
+  </p>
+  <pre class="prettyprint lang-js">var el = document.getElementById(“myChart”);<br/></br/>// Instantiate our chart.<br/>var myChart = new Phx(el);</pre>
+  <p>Using <em><strong>jQuery</strong></em>.</p>
+  <pre class="prettyprint lang-js">var el = $(“#myChart”).get(0);<br/>var myChart = new Phx(el);</pre>
+  <p>Using <em><strong>d3</strong></em>.</p>
+  <pre class="prettyprint lang-js">var el = d3.select(“#myChart”);<br/>var myChart = new Phx(el);</pre>
+  <p>Using <em><strong>CSS selectors</strong></em>.</p>
+  <pre class="prettyprint lang-js">var myChart = new Phx("#myChart");</pre>
+
+  <h3>Chart Object(s)</h3>
+  <p>
+    Since Phx can create multiple charts, data passed to Phx must be in the form of a chart object. So, if you are
+    creating a single chart, then the chart object can be passed directly to the <code>data</code> method. If you
+    are creating more than one chart, then an array of chart objects need to be passed to the <code>data</code> method.
+    <br>
+    <br>For example:
+  </p>
+
+  <pre class="prettyprint lang-js">// Single Chart<br/>var singleChart = {<br/>  data: [...] // data accessor<br/>};<br/><br/>myChart.data(singleChart);<br/><br/>// Multiple Charts<br/>var multipleCharts = [<br/>  { data: [...] }, // Chart 1<br/>  { data: [...] }, // Chart 2<br/>  { data: [...] }, // Chart 3<br/>];<br/><br/>myChart.data(multipleCharts);</pre>
+  <p>
+    <strong>NOTE: </strong>Chaining <code>data</code> methods overwrites the previous data object passed in to the
+    <code>data</code> method.
+  </p>
+
+  <h4>Anatomy of a Chart Object</h4>
+  <p>
+    Each chart object has two keys, <code>data</code> (required) and <code>options</code> (optional). The
+    format of data is dependent on the type of chart being rendered. Options are key value pairs whose keys and
+    values are dependent on the type of chart being rendered.
+    <br/>
+    <br/>For example:
+  </p>
+
+  <pre class="prettyprint lang-js">var options = {<br/>  type: "series", // type of chart<br/>  layout: "grid", // layout for the charts<br/>  accessor: "data" // Specifies the key to pull off the data from each chart<br/>};<br/><br/>var data = [<br/>  {x: "apple", y: 10}<br/>  {x: "orange", y: 5}<br/>  {x: "banana", y: 2}<br/>];<br/><br/>var chart = { options: options, data: data };<br/><br/>myChart.data(chart)</pre>
+
+  <h3>Global Options</h3>
+  <p>
+    Global <strong>options</strong> are options shared across one or more charts, and are specified using the
+    <code>options</code> method. It takes the format of an <code>Object</code> of key value pairs whose keys and
+    values are dependent on the type of chart being rendered.
+  </p>
+  <pre class="prettyprint lang-js">// Global options<br/>var options = {<br/>  type: "series",<br/>  layout: "grid",<br/>  accessor: "data"<br/>};<br/><br/>// Pass the options object to the options method to set the global options.<br/>myChart.options(options);</pre>
+  <p>
+    <strong>NOTE: </strong>Options specified within the Chart <code>Object</code> take precedence over those
+    specified using the <code>options</code> method.
+  </p>
+
+  <h4>Getting/Setting Global Options</h4>
+  <p>
+    There are times when you'll need to either get or set global options one at a time. For example when
+    changing a charts layout. In these situations, you can use the <code>get</code> and <code>set</code>
+    methods.
+  </p>
+
+  <pre class="prettyprint lang-js">// Get Layout type<br/>myChart.get("layout"); // returns `grid`<br/><br/>// Set the Layout to `columns`<br/>myChart.set("layout", "columns");<br/>myChart.get("layout"); // returns `columns`</pre>
+
+  <h3>Rendering a Chart(s)</h3>
+  <p>
+    Once we've satisfied our 3 requirements, <strong>DOM reference</strong>, <strong>data</strong>, and
+    <strong>options</strong>, we can use the <code>draw</code> method to render our chart(s).
+    <br/>
+    <br/>
+    The draw method takes two (optional) arguments, a <code>width</code> and <code>height</code>. The arguments
+    can either be numbers or functions that return numbers. If the width and height are not passed as parameters
+    to the <code>draw</code> method, <code>Phx</code> will attempt to read the width and height from the DOM
+    reference passed. If no width and height can be calculated, then no chart(s) are rendered.
+  </p>
+
+  <pre class="prettyprint lang-js">// Draw chart(s)<br/>myChart.draw();</pre>
+</div>
