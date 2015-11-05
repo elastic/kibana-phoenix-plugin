@@ -1,7 +1,8 @@
 var _ = require('lodash');
 var defaultOptions = {
   size: 50,
-  type: 'series',
+  stackCount: 1,
+  time: true,
   startTime: (new Date()).getTime(), // in ms format
   label: 'Label 1',
   interval: 1000 * 30 // 30 seconds
@@ -18,28 +19,40 @@ function makeString() {
   return text;
 }
 
+function merge(a, b) {
+  return a.concat(b);
+}
+
 function fakeData(pref) {
   var settings = _.assign({}, defaultOptions, pref);
 
   var data = [];
-  var count = 0;
+  var stackCount = 0;
 
-  while(count < settings.size) {
-    if (settings.type === 'series') {
-      data.push({
-        x: settings.startTime + count * settings.interval,
-        y: Math.floor(Math.random() * 100)
-      });
-    } else {
-      data.push({
-        x: makeString(),
-        y: Math.floor(Math.random() * 100)
-      });
+  while(stackCount < settings.stackCount) {
+    var layer = [];
+    var count = 0;
+
+    while(count < settings.size) {
+      if (settings.time) {
+        layer.push({
+          x: settings.startTime + count * settings.interval,
+          y: Math.floor(Math.random() * 100)
+        });
+      } else {
+        layer.push({
+          x: makeString(),
+          y: Math.floor(Math.random() * 100)
+        });
+      }
+      ++count;
     }
-    ++count;
+
+    data.push(layer);
+    ++stackCount;
   }
 
-  return data;
+  return data.length > 1 ? data : data.reduce(merge, []);
 }
 
 module.exports = fakeData;
