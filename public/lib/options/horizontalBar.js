@@ -12,7 +12,7 @@ var barOptions = {
   },
   bar: {
     show: true,
-    timePadding: 0.1,
+    timePadding: 0.2,
     orientation: 'horizontal',
     fill: 'blue',
     stroke: 'none',
