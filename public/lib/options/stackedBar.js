@@ -1,12 +1,12 @@
 var colors = {
-  0: 'green',
-  1: 'blue',
-  2: 'purple'
+  0: "blue",
+  1: "orange"
 };
 
-var areaOptions = {
+var barOptions = {
   type: 'series',
   layout: 'grid',
+  timeInterval: '30s',
   xAxis: {
     position: 'bottom',
     type: 'datetime'
@@ -16,10 +16,10 @@ var areaOptions = {
     type: 'linear',
     accessor: function (d) { return d.y0 + d.y; }
   },
-  area: {
+  bar: {
     show: true,
-    interpolate: 'basis',
-    tension: 0.7,
+    timePadding: 0.2,
+    orientation: 'vertical',
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
@@ -27,4 +27,4 @@ var areaOptions = {
   }
 };
 
-module.exports = areaOptions;
+module.exports = barOptions;

@@ -1,25 +1,24 @@
 var colors = {
-  0: 'green',
-  1: 'blue',
-  2: 'purple'
+  0: "green",
+  1: "blue"
 };
 
-var areaOptions = {
+var barOptions = {
   type: 'series',
   layout: 'grid',
   xAxis: {
     position: 'bottom',
-    type: 'datetime'
+    type: 'linear'
   },
   yAxis: {
     position: 'left',
-    type: 'linear',
-    accessor: function (d) { return d.y0 + d.y; }
+    categories: function (d) { return d.x; },
+    sort: function (a, b) { return a.y < b.y; }
   },
-  area: {
+  bar: {
     show: true,
-    interpolate: 'basis',
-    tension: 0.7,
+    group: true,
+    orientation: 'horizontal',
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
@@ -27,4 +26,4 @@ var areaOptions = {
   }
 };
 
-module.exports = areaOptions;
+module.exports = barOptions;

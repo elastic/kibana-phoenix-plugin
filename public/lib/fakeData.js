@@ -19,6 +19,17 @@ function makeString() {
   return text;
 }
 
+function randomSign(num) {
+  var randomNumber = Math.random();
+  if (randomNumber < 0.5) return -num;
+  return num;
+}
+
+function getPreviousValues(arr, index) {
+  // Pull previous x value off of first array based on the index position
+  return arr[0][index].x;
+}
+
 function merge(a, b) {
   return a.concat(b);
 }
@@ -37,12 +48,14 @@ function fakeData(pref) {
       if (settings.time) {
         layer.push({
           x: settings.startTime + count * settings.interval,
-          y: Math.floor(Math.random() * 100)
+          y: Math.floor(Math.random() * 100),
+          label: stackCount
         });
       } else {
         layer.push({
-          x: makeString(),
-          y: Math.floor(Math.random() * 100)
+          x: stackCount > 0 ? getPreviousValues(data, count) : makeString(),
+          y: Math.floor(Math.random() * 100),
+          label: stackCount
         });
       }
       ++count;

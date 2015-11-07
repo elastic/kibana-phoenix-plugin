@@ -4,28 +4,26 @@ var colors = {
   2: 'purple'
 };
 
-var lineOptions = {
+var areaOptions = {
   type: 'series',
   layout: 'grid',
+  stack: {
+    offset: 'wiggle',
+    order: 'inside-out'
+  },
   xAxis: {
     position: 'bottom',
     type: 'datetime'
   },
   yAxis: {
     position: 'left',
-    type: 'linear'
+    type: 'linear',
+    accessor: function (d) { return d.y0 + d.y; }
   },
-  line: {
+  area: {
     show: true,
-    interpolate: 'linear',
+    interpolate: 'basis',
     tension: 0.7,
-    stroke: function (d) { return colors[d.label]; },
-    strokeWidth: 3,
-    opacity: 1
-  },
-  points: {
-    show: true,
-    radius: 5,
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
@@ -33,4 +31,4 @@ var lineOptions = {
   }
 };
 
-module.exports = lineOptions;
+module.exports = areaOptions;

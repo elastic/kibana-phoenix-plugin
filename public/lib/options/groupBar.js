@@ -1,12 +1,12 @@
 var colors = {
-  0: 'green',
-  1: 'blue',
-  2: 'purple'
+  0: "blue",
+  1: "orange"
 };
 
-var lineOptions = {
+var barOptions = {
   type: 'series',
   layout: 'grid',
+  timeInterval: '30s',
   xAxis: {
     position: 'bottom',
     type: 'datetime'
@@ -15,17 +15,11 @@ var lineOptions = {
     position: 'left',
     type: 'linear'
   },
-  line: {
+  bar: {
     show: true,
-    interpolate: 'linear',
-    tension: 0.7,
-    stroke: function (d) { return colors[d.label]; },
-    strokeWidth: 3,
-    opacity: 1
-  },
-  points: {
-    show: true,
-    radius: 5,
+    group: true,
+    timePadding: 0.2,
+    orientation: 'vertical',
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
@@ -33,4 +27,4 @@ var lineOptions = {
   }
 };
 
-module.exports = lineOptions;
+module.exports = barOptions;

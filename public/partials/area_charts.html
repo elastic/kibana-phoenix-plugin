@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="container-fluid">
+    <div class="row">
+      <h2>Area Charts</h2>
+      <p>
+        Area charts are used to represent cumulated totals using numbers or
+        percentages (stacked area charts in this case) over time.
+      </p>
+    </div>
+    <div class="row" ng-controller="ChartCtrl" type="area">
+      <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+    </div>
+    <div class="row" ng-controller="ChartCtrl" type="area" stack="3">
+      <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+    </div>
+    <div class="row" ng-controller="ChartCtrl" type="overlap" stack="3">
+      <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+    </div>
+    <div class="row" ng-controller="ChartCtrl" type="percentageArea" stack="3">
+      <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+    </div>
+    <div class="row" ng-controller="ChartCtrl" type="stream" stack="3">
+      <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+    </div>
+    <!--<div class="row" ng-controller="ChartCtrl" time="false" type="categoricalArea">-->
+      <!--<ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>-->
+    <!--</div>-->
+    <!--<div class="row" ng-controller="ChartCtrl" time="false" type="categoricalArea" stack="2">-->
+      <!--<ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>-->
+    <!--</div>-->
+  </div>
+</div>
