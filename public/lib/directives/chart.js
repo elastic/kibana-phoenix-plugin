@@ -1,7 +1,7 @@
 var module = require('ui/modules').get('apps/phoenix', []);
 
 module.directive('chart', function () {
-  function link (scope, element, attrs) {
+  function link (scope, element) {
     var Phx = require('phx/build/phx');
     var chart = new Phx(element[0])
       .options(scope.options)

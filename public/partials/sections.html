@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="container-fluid" ng-repeat="chart in charts">
+    <div class="row">
+      <h2>{{ chart.header }}</h2>
+      <p>{{ chart.description }}</p>
+    </div>
+    <div class="container-fluid" ng-repeat="graph in chart.graphs">
+      <div class="row" ng-controller="ChartCtrl" type="graph.type" stack="graph.stack"
+           time="graph.time" size="graph.size">
+        <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
+      </div>
+    </div>
+  </div>
+</div>
