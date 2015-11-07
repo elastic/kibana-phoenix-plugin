@@ -1,13 +1,13 @@
 var module = require('ui/modules').get('apps/phoenix', []);
 
-module.controller('ChartCtrl', function ($scope, $attrs) {
+module.controller('ChartCtrl', function ($scope) {
   var faker = require('plugins/phoenix/lib/fakeData.js');
   var options = require('plugins/phoenix/lib/options/index');
   var titles = require('plugins/phoenix/lib/titles');
-  var size = $attrs.size || 10;
-  var time = $attrs.time !== 'false';
-  var type = $attrs.type || 'bar';
-  var stackCount = +$attrs.stack || 1;
+  var size = $scope.graph.size || 10;
+  var time = $scope.graph.time !== 'false';
+  var type = $scope.graph.type || 'bar';
+  var stackCount = +$scope.graph.stack || 1;
   var dataOpts = {
     size: size,
     time: time,
