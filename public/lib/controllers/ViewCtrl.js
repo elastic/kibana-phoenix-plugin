@@ -1,8 +1,25 @@
 var module = require('ui/modules').get('apps/phoenix', []);
 
-module.controller('ViewCtrl', function ($scope) {
+module.controller('ViewCtrl', function ($scope, $location, $anchorScroll) {
+  $scope.scrollTo = function(id) {
+    $location.hash(id);
+    $anchorScroll();
+  };
+
+  $scope.categories= [
+    {title: 'Getting Started', link: 'start'},
+    {title: 'Creating a Chart', link: 'create'},
+    {title: 'Bar Charts', link: 'bars'},
+    {title: 'Area Charts', link: 'areas'},
+    {title: 'Line Charts', link: 'lines'},
+    {title: 'Scatterplot', link: 'scatter'},
+    {title: 'Pie Charts', link: 'pie'},
+    {title: 'Combo Charts', link: 'combo'}
+  ];
+
   $scope.charts = [
     {
+      id: 'bars',
       header: 'Bar Charts',
       description: 'A bar chart is a chart that uses either horizontal or ' +
       'vertical bars to show comparisons among categories or for time series.',
@@ -19,6 +36,7 @@ module.controller('ViewCtrl', function ($scope) {
       ]
     },
     {
+      id: 'areas',
       header: 'Area Charts',
       description: 'Area charts are used to represent cumulated totals using numbers or' +
       ' percentages (stacked area charts in this case) over time.',
@@ -31,6 +49,7 @@ module.controller('ViewCtrl', function ($scope) {
       ]
     },
     {
+      id: 'lines',
       header: 'Line Charts',
       description: '',
       graphs: [
@@ -38,13 +57,14 @@ module.controller('ViewCtrl', function ($scope) {
         {type: 'line', stack: 3, title: 'Multiple Line Chart'}
       ]
     },
-    //{
-    //  header: 'Point Charts',
-    //  description: '',
-    //  graphs: [
-    //    {type: 'scatter', title: 'Scatter Plot'}
-    //  ]
-    //},
+    {
+      id: 'scatter',
+      header: 'Scatterplot',
+      description: '',
+      graphs: [
+        {type: 'scatter', title: 'Scatter Plot'}
+      ]
+    },
     //{
     //  header: 'Combo Charts',
     //  description: '',

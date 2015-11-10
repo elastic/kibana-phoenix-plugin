@@ -10,6 +10,7 @@ var options = {
   percentageArea: require('plugins/phoenix/lib/options/percentageArea.js'),
   percentageBar: require('plugins/phoenix/lib/options/percentageBar.js'),
   overlap: require('plugins/phoenix/lib/options/overlap.js'),
+  scatter: require('plugins/phoenix/lib/options/scatter.js'),
   stream: require('plugins/phoenix/lib/options/stream.js'),
   groupBar: require('plugins/phoenix/lib/options/groupBar.js'),
   column: require('plugins/phoenix/lib/options/column.js'),

@@ -1,26 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="ViewCtrl">
   <div class="row">
-    <div class="col-sm-3">
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation">Getting Started</li>
-        <li role="presentation">Creating a Chart</li>
-        <li role="presentation">Bar Charts</li>
-        <li role="presentation">Area Charts</li>
-        <li role="presentation">Line Charts</li>
-        <li role="presentation">Scatterplot</li>
-        <li role="presentation">Pie Charts</li>
-        <li role="presentation">Combo Charts</li>
-      </ul>
-    </div>
-
-    <div class="col-sm-8">
-      <div class="container-fluid" ng-controller="ViewCtrl">
-        <ng-include src="'../plugins/phoenix/partials/heading.html'"></ng-include>
-        <ng-include src="'../plugins/phoenix/partials/getting_started.html'"></ng-include>
-        <ng-include src="'../plugins/phoenix/partials/creating_a_chart.html'"></ng-include>
-        <ng-include src="'../plugins/phoenix/partials/sections.html'"></ng-include>
-      </div>
-    </div>
+    <ng-include src="'../plugins/phoenix/partials/sidebar.html'"></ng-include>
+    <ng-include src="'../plugins/phoenix/partials/main_content.html'"></ng-include>
   </div>
 </div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
