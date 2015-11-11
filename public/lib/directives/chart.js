@@ -20,7 +20,7 @@ module.directive('chart', function () {
       data: '=',
       options: '='
     },
-    template: '<div style="height:100%; position:relative;"></div>',
+    template: '<div style="height:100%;"></div>',
     replace: 'true',
     link: link
   };
