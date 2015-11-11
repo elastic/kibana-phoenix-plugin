@@ -1,6 +1,7 @@
 var options = {
   area: require('plugins/phoenix/lib/options/area.js'),
   bar: require('plugins/phoenix/lib/options/bar.js'),
+  donut: require('plugins/phoenix/lib/options/donut.js'),
   horizontalBar: require('plugins/phoenix/lib/options/horizontalBar.js'),
   categoricalBar: require('plugins/phoenix/lib/options/categoricalBar.js'),
   categoricalArea: require('plugins/phoenix/lib/options/categoricalArea.js'),
@@ -9,6 +10,7 @@ var options = {
   stackedBar: require('plugins/phoenix/lib/options/stackedBar.js'),
   percentageArea: require('plugins/phoenix/lib/options/percentageArea.js'),
   percentageBar: require('plugins/phoenix/lib/options/percentageBar.js'),
+  pie: require('plugins/phoenix/lib/options/pie.js'),
   overlap: require('plugins/phoenix/lib/options/overlap.js'),
   scatter: require('plugins/phoenix/lib/options/scatter.js'),
   stream: require('plugins/phoenix/lib/options/stream.js'),

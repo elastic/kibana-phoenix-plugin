@@ -65,6 +65,15 @@ module.controller('ViewCtrl', function ($scope, $location, $anchorScroll) {
         {type: 'scatter', title: 'Scatter Plot'}
       ]
     },
+    {
+      id: 'pie',
+      header: 'Pie Charts',
+      description: '',
+      graphs: [
+        {type: 'pie', size: 3, time: 'false', title: 'Pie Chart'},
+        {type: 'donut', size: 3, time: 'false', title: 'Donut Chart'}
+      ]
+    },
     //{
     //  header: 'Combo Charts',
     //  description: '',
