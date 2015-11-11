@@ -26,7 +26,7 @@ var barOptions = {
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
-    opacity: 1
+    fillOpacity: 1
   }
 };
 

@@ -70,7 +70,7 @@ module.controller('ViewCtrl', function ($scope, $location, $anchorScroll) {
       header: 'Pie Charts',
       description: '',
       graphs: [
-        {type: 'pie', size: 3, time: 'false', title: 'Pie Chart'},
+        {type: 'pie', size: 3, time: 'false', title: 'Traditional Pie Chart'},
         {type: 'donut', size: 3, time: 'false', title: 'Donut Chart'}
       ]
     },

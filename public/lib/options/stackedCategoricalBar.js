@@ -6,6 +6,12 @@ var colors = {
 var barOptions = {
   type: 'series',
   layout: 'grid',
+  stack: {
+    out: function (d, y0, y) {
+      d.y0 = y0;
+      d.y = y;
+    }
+  },
   xAxis: {
     position: 'bottom',
     type: 'linear',

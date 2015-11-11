@@ -7,6 +7,12 @@ var barOptions = {
   type: 'series',
   layout: 'grid',
   timeInterval: '30s',
+  stack: {
+    out: function (d, y0, y) {
+      d.y0 = y0;
+      d.y = y;
+    }
+  },
   xAxis: {
     position: 'bottom',
     type: 'datetime'
