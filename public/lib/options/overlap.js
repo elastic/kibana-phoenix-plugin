@@ -25,7 +25,7 @@ var areaOptions = {
     fill: function (d) { return colors[d.label]; },
     stroke: 'none',
     strokeWidth: 0,
-    opacity: 0.6
+    fillOpacity: 0.6
   }
 };
 
