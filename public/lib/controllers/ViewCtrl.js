@@ -71,7 +71,8 @@ module.controller('ViewCtrl', function ($scope, $location, $anchorScroll) {
       description: '',
       graphs: [
         {type: 'pie', size: 3, time: 'false', title: 'Traditional Pie Chart'},
-        {type: 'donut', size: 3, time: 'false', title: 'Donut Chart'}
+        {type: 'donut', size: 3, time: 'false', title: 'Donut Chart'},
+        {type: 'sunburst', isHierData: 'true', title: 'Multi Layer Pie Chart'}
       ]
     },
     //{

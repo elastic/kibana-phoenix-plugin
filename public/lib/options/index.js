@@ -16,7 +16,8 @@ var options = {
   stream: require('plugins/phoenix/lib/options/stream.js'),
   groupBar: require('plugins/phoenix/lib/options/groupBar.js'),
   column: require('plugins/phoenix/lib/options/column.js'),
-  line: require('plugins/phoenix/lib/options/line.js')
+  line: require('plugins/phoenix/lib/options/line.js'),
+  sunburst: require('plugins/phoenix/lib/options/sunburst.js')
 };
 
 module.exports = options;

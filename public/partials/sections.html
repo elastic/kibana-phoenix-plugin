@@ -6,7 +6,7 @@
     </div>
     <div class="container-fluid" ng-repeat="graph in chart.graphs">
       <div class="row" ng-controller="ChartCtrl" type="graph.type" stack="graph.stack"
-           time="graph.time" size="graph.size">
+           time="graph.time" size="graph.size" isHierData="graph.isHierData">
         <ng-include src="'../plugins/phoenix/partials/chart_section.html'"></ng-include>
       </div>
     </div>
