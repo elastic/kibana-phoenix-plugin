@@ -11,7 +11,7 @@
   "dependencies": {
     "bluebird": "^2.10.2",
     "d3": "3.5.8",
-    "phx": "0.3.9"
+    "phx": "0.4.0"
   },
   "devDependencies": {
     "gulp": "3.9.0",

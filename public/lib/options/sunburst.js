@@ -7,6 +7,7 @@ var sunburstOptions = {
   margin: {top: 20, right: 20, bottom: 20, left: 20},
   children: 'values',
   donut: false,
+  label: function (d) { return d.key ? d.key : d.winner; },
   fill: function (d) {
     if (d.depth === 0) return 'none';
     return d.key ? color(d.key) : color(d.winner);
