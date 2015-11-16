@@ -1,4 +1,5 @@
 var module = require('ui/modules').get('apps/phoenix', []);
+var JSONfn = require('json-fn/jsonfn');
 
 module.controller('ChartCtrl', function ($scope) {
   var faker = require('plugins/phoenix/lib/fakeData.js');
@@ -17,8 +18,15 @@ module.controller('ChartCtrl', function ($scope) {
     return options[type];
   }
 
+  function replacer(key, value) {
+    if (value instanceof Function || typeof value === 'function') {
+      return value.toString().replace(/[\t\n]/g, '');
+    }
+    return value;
+  }
+
   function stringify(obj) {
-    return JSON.stringify(obj, null, 2);
+    return JSON.stringify(obj, replacer, 2);
   }
 
   $scope.ui = {
