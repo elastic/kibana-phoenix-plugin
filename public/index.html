@@ -1,4 +1,7 @@
-<div ng-controller="phoenix">
-<h1>Phoenix</h1>
-<div ng-bind="ui.data.length"></div>
+<div class="container-fluid" ng-controller="ViewCtrl">
+  <div class="row">
+    <ng-include src="'../plugins/phoenix/partials/sidebar.html'"></ng-include>
+    <ng-include src="'../plugins/phoenix/partials/main_content.html'"></ng-include>
+  </div>
 </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>

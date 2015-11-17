@@ -5,10 +5,7 @@ require('ui/chrome')
 }])
 .setRootTemplate(require('plugins/phoenix/index.html'));
 
-require('ui/modules').get('apps/phoenix', [])
-.controller('phoenix', function($scope) {
-  var faker = require('plugins/phoenix/lib/fakeData.js');
-  $scope.ui = {
-    data: faker()
-  };
-});
+require('plugins/phoenix/lib/controllers/ViewCtrl.js');
+require('plugins/phoenix/lib/controllers/ChartCtrl.js');
+require('plugins/phoenix/lib/directives/chart.js');
+require('plugins/phoenix/main.less');
